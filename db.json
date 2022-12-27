@@ -1,0 +1,67 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "John@gmail.com",
+      "username": "johnd",
+      "password": "m38rmF$",
+      "name": {
+        "firstname": "John",
+        "lastname": "Doe"
+      },
+      "address": {
+        "city": "kilcoole",
+        "street": "7835 new road",
+        "number": "5",
+        "zipcode": "12926-3874",
+        "geolocation": {
+          "lat": -37.3159,
+          "long": 81.1496
+        }
+      },
+      "phone": "1-570-236-7033"
+    },
+    {
+      "id": 2,
+      "email": "gfgfdg",
+      "username": "gfgf",
+      "password": "gfdgfdg",
+      "name": {
+        "firstname": "gdgf",
+        "lastname": "gdfgdfg"
+      },
+      "address": {
+        "city": "gdfgdf",
+        "street": "dgfdgf",
+        "number": 0,
+        "zipcode": "dgdfg",
+        "geolocation": {
+          "lat": 0,
+          "long": 0
+        }
+      },
+      "phone": "dfgfdf"
+    },
+    {
+      "id": 3,
+      "email": "dfgfg",
+      "username": "ghgjh",
+      "password": "serr",
+      "name": {
+        "firstname": "ryt",
+        "lastname": "jjhk"
+      },
+      "address": {
+        "city": "jkj",
+        "street": "rtrtr",
+        "number": 0,
+        "zipcode": "dgtdt",
+        "geolocation": {
+          "lat": 0,
+          "long": 0
+        }
+      },
+      "phone": "dtrt"
+    }
+  ]
+}
