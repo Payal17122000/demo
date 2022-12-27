@@ -27,11 +27,13 @@
 </template>
 
 <script setup>
+import { useUserStore } from "../store/users";
+
 import { defineProps, ref } from "vue";
-import axios from "axios";
 import { useRoute, useRouter } from "vue-router";
-const id = useRoute().params;
+const id = useRoute().params.id;
 const router = useRouter();
+const store = useUserStore();
 const props = defineProps(["user"]);
 console.log(props.user);
 
@@ -58,13 +60,11 @@ let user = ref({
 });
 
 const Done = async () => {
-  if (id.id == undefined) {
-    console.log("hii", user.value);
-    await axios.post("http://localhost:5000/users", user.value);
-    router.push("/users");
+  if (id == undefined) {
+    store.postUser(user.value);
+    router.push({ path: "/users", reload: true });
   } else {
-    console.log("hii", user.value);
-    await axios.put(`http://localhost:5000/users/${id.id}`, user.value);
+    store.updateUser(id, user.value);
     router.push("/users");
   }
 };

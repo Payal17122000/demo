@@ -24,7 +24,7 @@
         <td>latitude</td>
         <td>longitude</td>
       </tr>
-      <tr v-for="u in users.data" :key="u.id">
+      <tr v-for="u in getUsers" :key="u.id">
         <td>{{ u.id }}</td>
         <td>{{ u.email }}</td>
         <td>{{ u.username }}</td>
@@ -57,29 +57,25 @@
 </template>
 
 <script setup>
-import { ref, onBeforeMount } from "vue";
-import axios from "axios";
-// import { useRoute } from "vue-router";
+import { onMounted, computed, watch } from "vue";
+import { useUserStore } from "../store/users";
 
-let users = ref();
+const store = useUserStore();
 
-// const route = useRoute();
-
-onBeforeMount(() => {
-  console.log(users.value);
-  getUsers();
+const getUsers = computed(() => {
+  return store.getUsers;
 });
 
-const getUsers = () => {
-  axios.get(`http://localhost:5000/users`).then((res) => {
-    users.value = res;
+watch(getUsers, () => {
+  store.fetchUsers();
+});
 
-    return res;
-  });
-};
+onMounted(() => {
+  store.fetchUsers();
+});
 
 const deleteUser = async (id) => {
-  await axios.delete(`http://localhost:5000/users/${id}`);
+  store.deleteUser(id);
   location.reload();
 };
 </script>

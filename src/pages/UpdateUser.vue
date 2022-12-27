@@ -1,29 +1,24 @@
 <template>
-  <div><UpSert :user="user.data" />{{ user }}</div>
+  <div><UpSert :user="getUser" /></div>
 </template>
 
 <script setup>
-import { ref, onBeforeMount } from "vue";
 import UpSert from "@/components/UpSert.vue";
-import axios from "axios";
+import { onBeforeMount, computed } from "vue";
+import { useUserStore } from "../store/users";
 import { useRoute } from "vue-router";
 
-const id = useRoute().params;
-console.log(id);
+const id = useRoute().params.id;
 
-let user = ref();
-onBeforeMount(() => {
-  console.log(user.value);
-  getUser();
+const store = useUserStore();
+
+const getUser = computed(() => {
+  return store.getUser;
 });
 
-const getUser = () => {
-  axios.get(`http://localhost:5000/users/${id.id}`).then((res) => {
-    user.value = res;
-
-    return res;
-  });
-};
+onBeforeMount(() => {
+  store.fetchUser(id);
+});
 </script>
 
 <style></style>

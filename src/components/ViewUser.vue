@@ -1,47 +1,40 @@
 <template>
   <div>
-    id:{{ user.data.id }}<br /><br />
-    email:{{ user.data.email }}<br /><br />
-    username:{{ user.data.username }}<br /><br />
-    password:{{ user.data.password }}<br /><br />
+    {{ getUser }}<br /><br /><br />
+    id:{{ getUser.id }}<br /><br />
+    email:{{ getUser.email }}<br /><br />
+    username:{{ getUser.username }}<br /><br />
+    password:{{ getUser.password }}<br /><br />
     name:<br /><br />
-    firstname:{{ user.data.name.firstname }}<br /><br />
-    lastname:{{ user.data.name.lastname }}<br /><br />
+    firstname:{{ getUser.name.firstname }}<br /><br />
+    lastname:{{ getUser.name.lastname }}<br /><br />
     address:<br /><br />
-    city:{{ user.data.address.city }}<br /><br />
-    street:{{ user.data.address.street }}<br /><br />
-    number:{{ user.data.address.number }}<br /><br />
-    zipcode:{{ user.data.address.zipcode }}<br /><br />
+    city:{{ getUser.address.city }}<br /><br />
+    street:{{ getUser.address.street }}<br /><br />
+    number:{{ getUser.address.number }}<br /><br />
+    zipcode:{{ getUser.address.zipcode }}<br /><br />
     geolocation:<br /><br />
-    latitude:{{ user.data.address.geolocation.lat }}<br /><br />
-    longitude:{{ user.data.address.geolocation.long }}<br /><br />
-    phone number:{{ user.data.phone }}<br /><br />
-    <button @click="$router.push(`/users/${user.data.id}/edit`)">Edit</button>
+    latitude:{{ getUser.address.geolocation.lat }}<br /><br />
+    longitude:{{ getUser.address.geolocation.long }}<br /><br />
+    phone number:{{ getUser.phone }}<br /><br />
+    <button @click="$router.push(`/users/${getUser.id}/edit`)">Edit</button>
   </div>
 </template>
 
 <script setup>
-import { ref, onBeforeMount } from "vue";
-import axios from "axios";
+import { onBeforeMount, computed } from "vue";
+import { useUserStore } from "../store/users";
 import { useRoute } from "vue-router";
-// import { useRoute } from "vue-router";
-const id = useRoute().params;
-console.log(id);
 
-let user = ref();
+const id = useRoute().params.id;
 
-// const route = useRoute();
+const store = useUserStore();
 
-onBeforeMount(() => {
-  console.log(user.value);
-  getUser();
+const getUser = computed(() => {
+  return store.getUser;
 });
 
-const getUser = () => {
-  axios.get(`http://localhost:5000/users/${id.id}`).then((res) => {
-    user.value = res;
-
-    return res;
-  });
-};
+onBeforeMount(() => {
+  store.fetchUser(id);
+});
 </script>

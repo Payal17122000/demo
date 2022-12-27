@@ -26,7 +26,6 @@ let user = ref({
   },
   phone: "",
 });
-console.log(user.value);
 </script>
 
 <style></style>
