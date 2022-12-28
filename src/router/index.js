@@ -1,7 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-// import Home from "@/views/Home.vue";
-
-// import UpSert from "@/components/UpSert.vue";
 import AllUsers from "@/components/AllUsers.vue";
 import ViewUsers from "@/components/ViewUser.vue";
 import InserUser from "@/pages/InserUser.vue";

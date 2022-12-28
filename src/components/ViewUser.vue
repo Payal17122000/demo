@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ getUser }}<br /><br /><br />
     id:{{ getUser.id }}<br /><br />
     email:{{ getUser.email }}<br /><br />
     username:{{ getUser.username }}<br /><br />
@@ -17,7 +16,12 @@
     latitude:{{ getUser.address.geolocation.lat }}<br /><br />
     longitude:{{ getUser.address.geolocation.long }}<br /><br />
     phone number:{{ getUser.phone }}<br /><br />
-    <button @click="$router.push(`/users/${getUser.id}/edit`)">Edit</button>
+    <button
+      class="btn btn-success"
+      @click="$router.push(`/users/${getUser.id}/edit`)"
+    >
+      Edit
+    </button>
   </div>
 </template>
 
