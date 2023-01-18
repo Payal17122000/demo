@@ -1,12 +1,15 @@
 # Vue3 Crud-Operations
 
 ## Used json server for Fake API
-To run json server for fake API
+To install and run json server for fake API
 ```
+npm install -g json-server
+
 json-server -p 5000 --watch db.json
 ```
 
-you can see on [localhost:5000/users](http://localhost:5000/users)
+- you can see on [localhost:5000/users](http://localhost:5000/users).
+- For more information about fake api and json server view [Documantation](https://github.com/typicode/json-server)
 
 ## Project setup
 
