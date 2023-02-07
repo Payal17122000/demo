@@ -3,8 +3,14 @@ import AllUsers from "@/components/AllUsers.vue";
 import ViewUsers from "@/components/ViewUser.vue";
 import InserUser from "@/pages/InserUser.vue";
 import UpdateUser from "@/pages/UpdateUser.vue";
+import RootPath from "@/components/RootPath.vue";
 
 const routes = [
+  {
+    path:"/",
+    component: RootPath,
+    name:"root",
+  },
   {
     path: "/users",
     component: AllUsers,
